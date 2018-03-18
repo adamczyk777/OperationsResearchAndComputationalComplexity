@@ -2,29 +2,29 @@ package main
 
 import (
 	"fmt"
-
+	"encoding/json"
 	"bufio"
 	"os"
 )
 
 type SubAhp struct {
-	name        string
-	preferences [][]float64
-	children    []SubAhp
+	Name        string
+	Preferences [][]float64
+	Children    []SubAhp
 }
 
 type Ahp struct {
-	alternatives []string
-	goal         SubAhp
+	Alternatives []string
+	Goal         SubAhp
 }
 
 func main() {
 	var ahp Ahp = Ahp{
-		alternatives: []string{},
-		goal: SubAhp{
-			name:        "",
-			preferences: [][]float64{},
-			children:    []SubAhp{},
+		Alternatives: []string{},
+		Goal: SubAhp{
+			Name:        "",
+			Preferences: [][]float64{},
+			Children:    []SubAhp{},
 		},
 	}
 
@@ -41,7 +41,9 @@ func main() {
 		case 1:
 			showData(&ahp)
 		case 2:
-			saveAsJSON()
+			resultString := toJSONString(&ahp)
+			fmt.Print(resultString)
+			writeToFile(resultString)
 		case 3:
 			fmt.Print("exiting program")
 			programRunning = false
@@ -51,8 +53,26 @@ func main() {
 	}
 }
 
-func saveAsJSON() {
-	
+func toJSONString(ahp *Ahp) string {
+	json, err := json.Marshal(*ahp)
+	if err != nil {
+		fmt.Print(err)
+	}
+	result := string(json)
+	return result
+}
+
+func writeToFile(stringToWrite string) {
+	f, err := os.OpenFile("ahp.json", os.O_RDWR|os.O_CREATE, 0755)
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
+	bytes, err := f.WriteString(stringToWrite)
+	if err != nil {
+		fmt.Print(err)
+	}
+	fmt.Printf("wrote %d bytes\n", bytes)
 }
 
 func printOptions(options []string) {
@@ -77,16 +97,22 @@ func getChoice() int {
 }
 
 func enterData(ahp *Ahp) {
-	options := []string{"Back to Menu", "Enter alternatives"}
+	options := []string{"Edit alternatives", "Edit Goals", "Back to Menu"}
 	printOptions(options)
 	choice := getChoice()
 
 	switch choice {
 	case 0:
-		return
-	case 1:
 		enterAlternative(ahp)
+	case 1:
+		editGoals(ahp)
+	case 2:
+		return
 	}
+}
+
+func editGoals(ahp *Ahp) {
+	fmt.Print("edit goals")
 }
 
 func printLine() {
@@ -103,7 +129,7 @@ func enterAlternative(ahp *Ahp) {
 			reader := bufio.NewReader(os.Stdin)
 			fmt.Print("Enter alternative name: ")
 			name, _ := reader.ReadString('\n')
-			ahp.alternatives = append(ahp.alternatives, name)
+			ahp.Alternatives = append(ahp.Alternatives, name)
 		} else {
 			addAnother = false
 		}
