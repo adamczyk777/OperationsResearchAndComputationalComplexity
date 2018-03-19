@@ -21,6 +21,7 @@ func main() {
 	for programRunning {
 		printOptions(options)
 		choice = getChoice()
+		clearConsole()
 		switch choice {
 		case 0:
 			enterData(&ahp)

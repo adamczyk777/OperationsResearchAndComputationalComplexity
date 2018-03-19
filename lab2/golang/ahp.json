@@ -1,1 +1,27 @@
-{"Alternatives":["uuuuuuu\n","iiiiiiiiiiii\n"],"Goal":{"Name":"","Preferences":[],"Children":[]}}
+{
+  "Alternatives": [
+    "mitsubishi\n",
+    "toyota\n"
+  ],
+  "Goal": {
+    "Name": "Car\n",
+    "Preferences": [],
+    "Children": [
+      {
+        "Name": "price\n",
+        "Preferences": [],
+        "Children": []
+      },
+      {
+        "Name": "vmax\n",
+        "Preferences": [],
+        "Children": []
+      },
+      {
+        "Name": "ecofriendliness\n",
+        "Preferences": [],
+        "Children": []
+      }
+    ]
+  }
+}
