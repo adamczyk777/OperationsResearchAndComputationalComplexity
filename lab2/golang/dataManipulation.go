@@ -44,7 +44,7 @@ func enterAlternative(ahp *Ahp) {
 			reader := bufio.NewReader(os.Stdin)
 			fmt.Print("Enter alternative name: ")
 			name, _ := reader.ReadString('\n')
-			ahp.Alternatives = append(ahp.Alternatives, name)
+			ahp.Alternatives = append(ahp.Alternatives, strings.TrimSpace(name))
 		} else {
 			addAnother = false
 		}
@@ -77,7 +77,7 @@ func editName(node *SubAhp) {
 	fmt.Print("New name: ")
 	reader := bufio.NewReader(os.Stdin)
 	name, _ := reader.ReadString('\n')
-	node.Name = name
+	node.Name = strings.TrimSpace(name)
 }
 
 func editPreferences(node *SubAhp) {
@@ -106,7 +106,7 @@ func editChildren(node *SubAhp) {
 		clearConsole()
 		fmt.Print("name:\n")
 		name := readString()
-		node.Children = append(node.Children, SubAhp{name, [][]float64{}, []SubAhp{}})
+		node.Children = append(node.Children, SubAhp{strings.TrimSpace(name), [][]float64{}, []SubAhp{}})
 	case 1:
 		fmt.Print("not available")
 	case 2:

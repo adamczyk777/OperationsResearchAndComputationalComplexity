@@ -1,25 +1,47 @@
 {
   "Alternatives": [
-    "mitsubishi\n",
-    "toyota\n"
+    "honda",
+    "toyota"
   ],
   "Goal": {
-    "Name": "Car\n",
-    "Preferences": [],
+    "Name": "Car",
+    "Preferences": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
     "Children": [
       {
-        "Name": "price\n",
-        "Preferences": [],
+        "Name": "horse power",
+        "Preferences": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
         "Children": []
       },
       {
-        "Name": "vmax\n",
-        "Preferences": [],
-        "Children": []
-      },
-      {
-        "Name": "ecofriendliness\n",
-        "Preferences": [],
+        "Name": "price",
+        "Preferences": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
         "Children": []
       }
     ]
