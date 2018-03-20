@@ -38,7 +38,7 @@ func toJSONString(ahp *Ahp) string {
 }
 
 func writeToFile(stringToWrite string) {
-	f, err := os.OpenFile("ahp.json", os.O_RDWR|os.O_CREATE, 0755)
+	f, err := os.OpenFile("ahp.json", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
 	if err != nil {
 		fmt.Print(err)
 		return
