@@ -6,6 +6,8 @@ import (
 	"os"
 	"strings"
 	"strconv"
+	"io/ioutil"
+	"encoding/json"
 )
 
 func getChoice() int {
@@ -133,4 +135,15 @@ func selectChild(node *SubAhp) {
 func showData(ahp *Ahp) {
 	fmt.Print(*ahp)
 	fmt.Print("\n")
+}
+
+func loadFromJson(filePath string, ahp *Ahp) {
+	buf, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		fmt.Printf("error: %s", err)
+		return
+	}
+	ahpFromJson := Ahp{}
+	json.Unmarshal(buf, &ahpFromJson)
+	*ahp = ahpFromJson
 }

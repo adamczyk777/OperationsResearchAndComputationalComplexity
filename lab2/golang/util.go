@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"bufio"
+	"strings"
 )
 
 func printOptions(options []string) {
@@ -53,6 +54,6 @@ func readString() string {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Value: ")
 	result, _ := reader.ReadString('\n')
+	result = strings.TrimSpace(result)
 	return result
 }
-
