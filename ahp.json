@@ -1,1 +1,49 @@
-{"alternatives":["honda","toyota"],"goal":{"name":"car","preferences":[[1,2],[1,2]],"children":[{"name":"performance","preferences":[[1,2],[1,2]],"children":[]},{"name":"price","preferences":[[1,2],[1,2]],"children":[]}]}}
+{
+  "alternatives": [
+    "T1",
+    "T2"
+  ],
+  "goal": {
+    "name": "Root",
+    "preferences": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "children": [
+      {
+        "name": "F1",
+        "preferences": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "children": null
+      },
+      {
+        "name": "F2",
+        "preferences": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "children": null
+      }
+    ]
+  }
+}

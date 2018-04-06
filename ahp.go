@@ -15,28 +15,31 @@ func main() {
 	}
 
 	var choice int
-	options := []string{"Enter Data", "Print Data", "Export as JSON", "Load from JSON file", "Exit Program"}
+	options := []string{"Exit Program", "Enter Data", "Print Data", "Export as JSON", "Load from JSON file", "Calculate Using Eigenvalue Method", "Calcualate using method"}
 	programRunning := true
 
 	for programRunning {
 		printOptions(options)
-		choice = getChoice()
+		choice = readChoice()
 		clearConsole()
 		switch choice {
 		case 0:
-			enterData(&ahp)
-		case 1:
-			showData(&ahp)
-		case 2:
-			resultString := toJSONString(&ahp)
-			fmt.Print(resultString)
-			writeToFile(resultString)
-		case 3:
-			file := readString()
-			loadFromJson(file, &ahp)
-		case 4:
 			fmt.Print("exiting program")
 			programRunning = false
+		case 1:
+			getEditDataMode(&ahp)
+		case 2:
+			showData(&ahp)
+		case 3:
+			writeToFile(&ahp)
+			fmt.Print("Written to a file")
+		case 4:
+			file := readString()
+			loadFromJsonFIle(file, &ahp)
+		case 5:
+			calculateWithEigenvalue()
+		case 6:
+			calculateUsing()
 		default:
 			fmt.Print("try again")
 		}
