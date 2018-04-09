@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os/exec"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 	}
 
 	var choice int
-	options := []string{"Exit Program", "Enter Data", "Print Data", "Export as JSON", "Load from JSON file", "Calculate Using Eigenvalue Method", "Calcualate using method"}
+	options := []string{"Exit Program", "Enter Data", "Print Data", "Export as JSON", "Load from JSON file", "Calculate Using Geometric Mean Method", "Calcualate using normalization method"}
 	programRunning := true
 
 	for programRunning {
@@ -37,9 +38,11 @@ func main() {
 			file := readString()
 			loadFromJsonFIle(file, &ahp)
 		case 5:
-			calculateWithEigenvalue()
+			out, _ := exec.Command("python3", "calculate.py", "gmm").Output()
+			fmt.Print(string(out))
 		case 6:
-			calculateUsing()
+			out, _ := exec.Command("python3", "calculate.py", "norm").Output()
+			fmt.Print(string(out))
 		default:
 			fmt.Print("try again")
 		}
