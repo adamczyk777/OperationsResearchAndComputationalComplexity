@@ -20,8 +20,13 @@ def get_vector(node, method):
     elif method == 'gmm':
         return gmm(node)
 
+def geo_mean(np_array):
+    return np_array.prod()**(1.0/len(np_array))
+
 def gmm(node):
-    return None
+    matrix = np.array(node['preferences'])
+    out_vector = np.apply_along_axis(geo_mean, 1, matrix)
+    return out_vector / out_vector.sum()
 
 def norm(node):
     matrix = np.array(node['preferences'])

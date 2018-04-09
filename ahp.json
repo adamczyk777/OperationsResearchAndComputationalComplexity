@@ -1,1 +1,11 @@
-{"alternatives":["honda","toyota"],"goal":{"name":"Car","preferences":[[1,2],[0.5,1]],"children":[{"name":"Speed","preferences":[[1,1],[1,1]],"children":[]},{"name":"Price","preferences":[[1,4],[0.25,1]],"children":[]}]}}
+{
+  "alternatives": ["honda", "toyota"],
+  "goal": {
+    "name": "Car",
+    "preferences": [[1, 2], [0.5, 1]],
+    "children": [
+      { "name": "Speed", "preferences": [[1, 1], [1, 1]], "children": [] },
+      { "name": "Price", "preferences": [[1, 4], [0.25, 1]], "children": [] }
+    ]
+  }
+}
