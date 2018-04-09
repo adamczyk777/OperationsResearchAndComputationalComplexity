@@ -2,15 +2,15 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
-	"strings"
+	"os"
 	"strconv"
+	"strings"
 )
 
 // Node edit mode selection
 func getNodeEditMode(node *SubAhp) {
-	options := []string{"Edit Name", "Edit Preferences", "Edit Children", "Select Child", "Back"}
+	options := []string{"Back", "Edit Name", "Edit Preferences", "Edit Children", "Select Child"}
 	editing := true
 	for editing == true {
 		printOptions(options)
@@ -58,7 +58,7 @@ func readChoice() int {
 
 // edit data mode selection
 func getEditDataMode(ahp *Ahp) {
-	options := []string{"Edit alternatives", "Edit Goals", "Back to Menu"}
+	options := []string{"Back to Menu", "Edit alternatives", "Edit Goals"}
 	printOptions(options)
 	choice := readChoice()
 

@@ -3,29 +3,38 @@ import json
 import numpy as np
 import copy
 
-method = sys.argv[1]
-
 def calculate(node):
     vector = get_vector(node, sys.argv[1])
-    if node.children is not None:
-        result_vector = np.array([0] * len(node.children))
-        for idx, child in node.children:
+    if node['children'] is not None and node['children'] != []:
+        result_vector = np.array([0] * len(node['children']))
+        for idx, child in enumerate(node['children']):
             child_vector = np.array(calculate(child))
             result_vector = result_vector + vector[idx] * child_vector
         return result_vector
     else:
         return vector
 
-
 def get_vector(node, method):
     if method == 'norm':
-        pass
+        return norm(node)
     elif method == 'gmm':
-        pass
-        
-        
-with open('ahp.json', 'r') as file:
-    data=json.loads(file.read())
+        return gmm(node)
 
-head = data.goal
+def gmm(node):
+    return None
+
+def norm(node):
+    matrix = np.array(node['preferences'])
+    matrix = matrix / matrix.sum(axis=0)
+    out_vector = np.mean(matrix, axis=1)
+    return out_vector / out_vector.sum()
+
+
+method = sys.argv[1]
+
+file = open('ahp.json', 'r+')
+data = json.loads(file.read())
+
+print(calculate(data['goal']))
+# print(calculate(data['goal']))
 
