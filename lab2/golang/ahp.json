@@ -1,0 +1,1 @@
+{"alternatives":["honda","toyota"],"goal":{"name":"car","preferences":[[1,2],[1,2]],"children":[{"name":"performance","preferences":[[1,2],[1,2]],"children":[]},{"name":"price","preferences":[[1,2],[1,2]],"children":[]}]}}
