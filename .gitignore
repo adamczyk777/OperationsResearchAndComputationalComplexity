@@ -121,3 +121,6 @@ venv.bak/
 .DS_Store
 
 .vscode/
+
+# jupyter trash
+./**/.ipynb_checkpoints
